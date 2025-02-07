@@ -1,7 +1,16 @@
-import { InputContainer, InputElement, Label,ErrorMessage } from "./styles";
+import { ErrorMessage, InputContainer, InputElement, Label } from "./styles";
 import { InputProps } from './types'
 
-function Input({ name, type = 'text', placeholder, label, id, value, onChange,error }: InputProps) {
+function Input({
+  name,
+  type = 'text',
+  placeholder,
+  label,
+  id,
+  value,
+  onChange,
+  error
+}: InputProps) {
   return (
     <InputContainer>
       {label && <Label htmlFor={id}>{label}</Label>}
@@ -12,7 +21,6 @@ function Input({ name, type = 'text', placeholder, label, id, value, onChange,er
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        checked={false}
       />
       <ErrorMessage>{error}</ErrorMessage>
     </InputContainer>
@@ -20,3 +28,5 @@ function Input({ name, type = 'text', placeholder, label, id, value, onChange,er
 }
 
 export default Input;
+
+
