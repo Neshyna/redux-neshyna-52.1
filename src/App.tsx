@@ -9,6 +9,7 @@ import Home from 'pages/UsersApp/Home/Home'
 import Users from 'pages/UsersApp/Users/Users'
 
 //homeworks
+import HW17 from './hw/hw17/HW17'
 
 //consultations
 
@@ -18,6 +19,7 @@ const App = () => {
       <GlobalStyles />
       {/* <Lesson17 /> */}
       {/* UserApp - Practice - Lesson17 */}
+      <HW17/>
       <Layout>
         <Routes>
           <Route path='/' element={<Home/>}/>
