@@ -16,6 +16,7 @@ export const feedbackSlice = createAppSlice({
     setDislike: create.reducer((state: FeedbackStateSlice) => {
       state.dislikes = state.dislikes + 1
     }),
+    // resetResults: create.reducer(()=>feedbackInitialState)
   }),
   selectors: {
     likeValue: (state: FeedbackStateSlice) => state.likes,

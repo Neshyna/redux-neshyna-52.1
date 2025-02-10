@@ -33,7 +33,7 @@ p {
 `
 
 function GlobalStyles() {
-  return <Global styles={globalStyles} />
+  return <Global styles={globalStyles}/>
 }
 
 export default GlobalStyles;

@@ -15,11 +15,11 @@ import {
 function Feedback() {
   const dispatch = useAppDispatch();
 
-  // const likes = useAppSelector(feedbackSelectors.likeValue);
-  // const dislikes = useAppSelector(feedbackSelectors.dislikeValue);
+  const likes = useAppSelector(feedbackSelectors.likeValue);
+  const dislikes = useAppSelector(feedbackSelectors.dislikeValue);
 
-  const likes = useAppSelector((state) => feedbackSelectors.likeValue(state));
-  const dislikes = useAppSelector((state) => feedbackSelectors.dislikeValue(state));
+  // const likes = useAppSelector((state) => feedbackSelectors.likeValue(state));
+  // const dislikes = useAppSelector((state) => feedbackSelectors.dislikeValue(state));
 
 
   const addLike = () => {
@@ -31,8 +31,8 @@ function Feedback() {
   };
 
   // const resetResults = () => {
-  //   dispatch(feedbackActions.setLike(0));
-  //   dispatch(feedbackActions.setDislike(0));
+  //   dispatch(feedbackActions.resetResults());
+  //   
   // };
 
   return (
