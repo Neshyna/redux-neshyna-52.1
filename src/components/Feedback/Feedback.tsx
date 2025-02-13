@@ -1,55 +1,46 @@
+import { useAppDispatch, useAppSelector } from "store/hooks";
+import { feedbackActions, feedbackSelectors } from "store/redux/feedback/feedbackSlice";
 import Button from "../Button/Button";
 import {
   FeedbackContainer,
   FeedbackResultContainer,
   LikeDislikeContainer,
-  Result,
+  Result
 } from "./styles";
 
-import { useAppDispatch, useAppSelector } from "store/hooks"
-import {
-  feedbackActions,
-  feedbackSelectors,
-} from "store/redux/feedback/feedbackSlice";
-
 function Feedback() {
+  // const feedbackData = useAppSelector(feedbackSelectors.feedbackData)
+  // console.log(feedbackData);
+  const { likeCount, dislikeCount } = useAppSelector(feedbackSelectors.feedbackData)
   const dispatch = useAppDispatch();
 
-  const likes = useAppSelector(feedbackSelectors.likeValue);
-  const dislikes = useAppSelector(feedbackSelectors.dislikeValue);
-
-  // const likes = useAppSelector((state) => feedbackSelectors.likeValue(state));
-  // const dislikes = useAppSelector((state) => feedbackSelectors.dislikeValue(state));
-
-
   const addLike = () => {
-    dispatch(feedbackActions.setLike());
-  };
+    dispatch(feedbackActions.addLike())
+  }
 
   const addDislike = () => {
-    dispatch(feedbackActions.setDislike());
-  };
+    dispatch(feedbackActions.addDislike())
+  }
 
-  // const resetResults = () => {
-  //   dispatch(feedbackActions.resetResults());
-  //   
-  // };
+  const resetResults = () => {
+    dispatch(feedbackActions.resetResults())
+  }
 
   return (
     <FeedbackContainer>
       <FeedbackResultContainer>
         <LikeDislikeContainer>
-          <Result>{likes}</Result>
+          <Result>{likeCount}</Result>
           <Button name="LIKE" type="button" onClick={addLike} />
         </LikeDislikeContainer>
         <LikeDislikeContainer>
-          <Result>{dislikes}</Result>
+          <Result>{dislikeCount}</Result>
           <Button name="DISLIKE" type="button" onClick={addDislike} />
         </LikeDislikeContainer>
       </FeedbackResultContainer>
-      {/* <Button name="RESET RESULTS" type="button" onClick={resetResults} /> */}
+      <Button name="RESET RESULTS" type="button" onClick={resetResults} />
     </FeedbackContainer>
-  )
+  );
 }
 
 export default Feedback;

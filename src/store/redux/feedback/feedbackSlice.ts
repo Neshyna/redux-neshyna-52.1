@@ -1,27 +1,25 @@
-import { createAppSlice } from "../../createAppSlice"
-import { FeedbackStateSlice } from "./types"
+import { createAppSlice } from "store/createAppSlice";
+import { FeedbackSliceState } from "./types";
 
-const feedbackInitialState: FeedbackStateSlice = {
-  likes: 0,
-  dislikes: 0,
+const feedbackInitialState: FeedbackSliceState = {
+  likeCount: 0,
+  dislikeCount: 0
 }
 
 export const feedbackSlice = createAppSlice({
-  name: "FEEDBACK",
+  name: 'FEEDBACK',
   initialState: feedbackInitialState,
   reducers: create => ({
-    setLike: create.reducer((state: FeedbackStateSlice) => {
-      state.likes = state.likes + 1
-    }),
-    setDislike: create.reducer((state: FeedbackStateSlice) => {
-      state.dislikes = state.dislikes + 1
-    }),
-    // resetResults: create.reducer(()=>feedbackInitialState)
+    addLike: create.reducer((state: FeedbackSliceState) => { state.likeCount = state.likeCount + 1 }),
+    addDislike: create.reducer((state: FeedbackSliceState) => { state.dislikeCount = state.dislikeCount + 1 }),
+    //способ очистки - вместо перезаписи свойств просто вернём initialState
+    resetResults: create.reducer(() => feedbackInitialState)
   }),
   selectors: {
-    likeValue: (state: FeedbackStateSlice) => state.likes,
-    dislikeValue: (state: FeedbackStateSlice) => state.dislikes,
-  },
+    //если в объекте state несколько свойств, то удобнее вернуть сразу весь объект state
+    // и уже в компоненте забрать отдельные свойства
+    feedbackData: (state: FeedbackSliceState) => state
+  }
 })
 
 export const feedbackActions = feedbackSlice.actions;
